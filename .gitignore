@@ -1,0 +1,6 @@
+db/
+data/raw/
+data/processed/
+.venv/
+.idea/
+__pycache__/
