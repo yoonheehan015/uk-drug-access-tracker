@@ -1,0 +1,38 @@
+name: Monthly SCMD Update
+
+on:
+  schedule:
+    - cron: '0 6 1 * *'  # 매월 1일 오전 6시
+  workflow_dispatch:  # 수동 실행도 가능
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: pip install pandas requests
+
+    - name: Download latest SCMD
+      run: python scripts/download_scmd.py
+
+    - name: Load to DB
+      run: python scripts/load_extra_months.py
+
+    - name: Export CSVs
+      run: python scripts/export_for_dashboard.py
+
+    - name: Commit updated data
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+        git add data/processed/
+        git commit -m "auto: monthly SCMD update $(date +'%Y-%m')" || echo "No changes"
+        git push
