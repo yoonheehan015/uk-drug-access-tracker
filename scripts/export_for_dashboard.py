@@ -1,3 +1,5 @@
+import os
+os.makedirs("data/processed", exist_ok=True)
 import sqlite3
 import pandas as pd
 
