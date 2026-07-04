@@ -2,8 +2,8 @@ name: Monthly SCMD Update
 
 on:
   schedule:
-    - cron: '0 6 1 * *'  # 매월 1일 오전 6시
-  workflow_dispatch:  # 수동 실행도 가능
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
 
 jobs:
   update:
