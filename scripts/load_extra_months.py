@@ -1,6 +1,10 @@
 import sqlite3
 import pandas as pd
 import glob
+import os
+
+# db 폴더 없으면 자동 생성
+os.makedirs("db", exist_ok=True)
 
 conn = sqlite3.connect("db/drug_access.db")
 

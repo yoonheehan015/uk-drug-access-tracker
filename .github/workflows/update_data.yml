@@ -23,6 +23,9 @@ jobs:
     - name: Download latest SCMD
       run: python scripts/download_scmd.py
 
+    - name: Initialize DB
+      run: python scripts/create_db.py
+
     - name: Load to DB
       run: python scripts/load_extra_months.py
 
