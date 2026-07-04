@@ -26,6 +26,9 @@ jobs:
     - name: Initialize DB
       run: python scripts/create_db.py
 
+    - name: Create NICE table
+      run: python scripts/create_nice_table.py
+
     - name: Load to DB
       run: python scripts/load_extra_months.py
 
