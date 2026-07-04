@@ -39,6 +39,6 @@ jobs:
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
-        git add data/processed/
+        git add -f data/processed/
         git commit -m "auto: monthly SCMD update $(date +'%Y-%m')" || echo "No changes"
         git push
